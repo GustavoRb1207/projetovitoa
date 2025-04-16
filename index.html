@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Simulador Honda</title>
+  <style>
+    body {
+      background-color: #f5f5f5;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .aviso {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .selecionar {
+      background-color: #eee;
+      padding: 10px;
+      display: inline-block;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    select {
+      padding: 10px;
+      font-size: 16px;
+      margin: 0 5px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #e60000;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #cc0000;
+    }
+    .icon {
+      color: #e60000;
+      font-size: 24px;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <p class="aviso">
+      Você pode solicitar informações sobre preço e condições de compra, serviços e peças.<br>
+      Inclua seus dados e uma de nossas concessionárias entrará em contato o mais breve possível.
+    </p>
+    <div class="selecionar">
+      <span class="icon">▶</span> Primeiro selecione seu Estado e sua Cidade
+    </div>
+    <div>
+      <select name="uf" id="uf">
+        <option value="">Selecione o Estado (UF)</option>
+        <option value="SP">São Paulo (SP)</option>
+      </select>
+      <select name="cidade" id="cidade">
+        <option value="">Selecione a Cidade</option>
+      </select>
+    </div>
+    <button type="submit">Enviar</button>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const ufSelect = document.getElementById('uf');
+      const cidadeSelect = document.getElementById('cidade');
+
+      const cidadesPorEstado = {
+        'SP': ['São Paulo']
+      };
+
+      ufSelect.addEventListener('change', function () {
+        const uf = this.value;
+        cidadeSelect.innerHTML = '<option value="">Selecione a Cidade</option>';
+
+        if (uf && cidadesPorEstado[uf]) {
+          cidadesPorEstado[uf].forEach(function (cidade) {
+            const option = document.createElement('option');
+            option.value = cidade;
+            option.textContent = cidade;
+            cidadeSelect.appendChild(option);
+          });
+        }
+      });
+
+      document.querySelector('button').addEventListener('click', function () {
+        const cidade = cidadeSelect.value;
+
+        if (cidade) {
+          const slug = cidade
+            .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+            .toLowerCase()
+            .replace(/\s+/g, "_");
+          window.location.href = `${slug}.html`;
+        } else {
+          alert("Por favor, selecione uma cidade.");
+        }
+      });
+    });
+  </script>
+</body>
+</html>

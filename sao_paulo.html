@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Concessionária Honda - São Paulo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background-color: #e60000;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      background-color: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .titulo {
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: #e60000;
+    }
+
+    .descricao {
+      font-size: 16px;
+      color: #444;
+      margin-bottom: 30px;
+    }
+
+    .info {
+      font-size: 16px;
+      color: #222;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    form {
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    .form-button {
+      background-color: #e60000;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-button:hover {
+      background-color: #cc0000;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Concessionária Honda - São Paulo</h1>
+  </div>
+
+  <div class="container">
+    <div class="titulo">Honda Auto Shopping</div>
+    <div class="descricao">
+      Bem-vindo à nossa concessionária em São Paulo. Aqui você encontra os melhores modelos, ofertas exclusivas,
+      atendimento especializado e toda a linha de motos Honda para você.
+    </div>
+
+    <div class="info">
+      <strong>Endereço:</strong> Av. dos Autonomistas, 1400 - Osasco, SP<br>
+      <strong>CEP:</strong> 06020-010<br>
+      <strong>Telefone:</strong> (11) 3456-7890<br>
+      <strong>Horário de atendimento:</strong> Segunda a sexta das 8h às 18h, sábado das 9h às 14h
+    </div>
+
+    <form>
+      <h2>Solicite um Orçamento</h2>
+
+      <label for="nome">Nome completo:</label>
+      <input type="text" id="nome" name="nome" required>
+
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="telefone">Telefone:</label>
+      <input type="tel" id="telefone" name="telefone" pattern="[0-9]{10,11}" placeholder="Somente números" required>
+
+      <label for="cpf">CPF:</label>
+      <input type="text" id="cpf" name="cpf" pattern="\d{11}" maxlength="11" placeholder="Apenas números (11 dígitos)" required>
+
+      <label for="cep">CEP:</label>
+      <input type="text" id="cep" name="cep" pattern="\d{8}" maxlength="8" placeholder="Apenas números (8 dígitos)" required>
+
+      <label for="renda">Renda mensal (R$):</label>
+      <input type="number" id="renda" name="renda" min="0" step="0.01" placeholder="Ex: 3500.00" required>
+
+      <label for="pagamento">Forma de pagamento:</label>
+      <select id="pagamento" name="pagamento" required>
+        <option value="">Selecione</option>
+        <option value="avista">À vista</option>
+        <option value="financiamento">Financiamento</option>
+      </select>
+
+      <button type="submit" class="form-button">Enviar</button>
+    </form>
+  </div>
+
+</body>
+</html>
